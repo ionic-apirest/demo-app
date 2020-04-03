@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngIf="marcas?.length == 0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <ion-item
+      *ngFor="let marcas of marcas"
+      [routerLink]="['/marcas/detalle', marcas.id]"
+    >
+    <ion-avatar slot="start">
+      <img *ngIf="marcas?.foto"
+      src="http://localhost:9898/api/uploads/img/{{marcas.foto}}" alt="{{marcas.foto}}"
+      >
+      <img *ngIf="!marcas?.foto"
+      src="http://localhost:9898/images/no-usuario.png" alt="Sin foto"
+     >
+    </ion-avatar>
+    <ion-label>
+        {{marcas.nombre}}
+    </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button  color="danger" [routerLink]="['/marcas/detalle']">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+  </ion-fab>
+  </ion-content>
