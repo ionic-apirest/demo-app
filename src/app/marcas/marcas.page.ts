@@ -11,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class MarcasPage implements OnInit {
   public titulo: string = "Inicio";
-  marcas: Marcas[];
+  marcas: Marcas[] = [];
 
   constructor(
 //    private marcasService: MarcasService,

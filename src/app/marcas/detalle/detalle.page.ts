@@ -14,7 +14,8 @@ import { AlertController } from "@ionic/angular";
 export class DetallePage implements OnInit {
 
     marcas: Marcas[] = [];
-
+  //  rows: Marcas[] = [];
+  public rows: { id: number; nombre: string; numeroserie: string; fecharegistro: string; foto: string; }[]
 
   constructor(private marcasService: MarcasService,
     private marcasControlerService: MarcasRestControllerService,
@@ -71,11 +72,12 @@ export class DetallePage implements OnInit {
     await alertElement.present();
   }
 
-/*
+
   update(): void {
     console.log(this.marcas)
   //  this.marcasService.update(this.marcas)
-    this.marcasControlerService.updateUsingPUT(this.marcas)
+/*
+  this.marcasControlerService.updateUsingPUT(this.marcas.id, this.marcas)
       .subscribe(
         json => {
           this.router.navigate(['/marcas']);
@@ -86,13 +88,27 @@ export class DetallePage implements OnInit {
           console.error(err.error.errors);
         }
       )
-  }
-*/
-/*
+  */
+ //Update item by taking id and updated data object
+ this.marcasControlerService.updateUsingPUT(this.marcas.id, this.marcas).subscribe(response => {
+  this.router.navigate(['/marcas']);
+})
+
+    }
+
+
   create(): void {
     console.log(this.marcas)
   //  this.marcasService.create(this.marcas)
-    this.marcasControlerService.createUsingPOST(this.marcas)
+  //  var test: Marcas = this.marcas
+  //  this.marcas.push(test);
+    let myArray = [];  
+    myArray.push(this.marcas);
+
+  
+    this.marcasControlerService.createUsingPOST( {nombre:"hector", numero_serie: "1233", fechaRegistro: "2020-01-01", foto: ""} )
+
+//      this.marcasControlerService.createUsingPOST(this.marcas)
       .subscribe(
         marcas => {
           this.router.navigate(['/marcas']);
@@ -103,6 +119,7 @@ export class DetallePage implements OnInit {
           console.error(err.error.errors);
         }
       );
+    
   }
-*/
+
 }

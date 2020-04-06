@@ -16,7 +16,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class MarcasRestControllerService {
 
-    protected basePath = 'http://localhost:9898';
+    protected basePath = 'http://midata24.com/spring-boot-backend-electronic.apirest-0.0.1';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

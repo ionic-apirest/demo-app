@@ -12,9 +12,9 @@
 
 
 export interface Marcas {
-    fechaRegistro?: Date;
+    fechaRegistro?: string;
     foto?: string;
     id?: number;
     nombre?: string;
-    numeroSerie?: string;
+    numero_serie?: string;
 }
